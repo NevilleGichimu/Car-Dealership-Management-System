@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Inventory Status</h1>
+<p>Number of cars available: {{ available_cars_count }}</p>
+<p>Number of cars sold: {{ sold_cars_count }}</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>VIN</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>BP</th>
+            <th>SP</th>
+            <th>Date Bought</th>
+            <th>Date Sold</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in available_cars %}
+            <tr>
+                <td>{{ car.vin }}</td>
+                <td>{{ car.make }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.BP }}</td>
+                <td>{{ car.SP }}</td>
+                <td>{{ car.bought_date }}</td>
+                <td>{{ car.sold_date if car.sold_date else 'N/A' }}</td>
+                <td>Available in inventory</td>
+            </tr>
+        {% endfor %}
+        {% for car in sold_cars %}
+            <tr>
+                <td>{{ car.vin }}</td>
+                <td>{{ car.make }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.BP }}</td>
+                <td>{{ car.SP }}</td>
+                <td>{{ car.bought_date }}</td>
+                <td>{{ car.sold_date }}</td>
+                <td>Not in Inventory</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

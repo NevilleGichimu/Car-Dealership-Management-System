@@ -1,0 +1,10 @@
+<table class="table table-hover">
+    <tr>
+        <td>
+        {{ post.author.customername }}   
+        {{ (moment(post.timestamp).fromNow()) }}
+            <br>
+            <span id="post{{ post.id }}">{{ post.body }}</span>
+        </td>
+    </tr>
+</table>

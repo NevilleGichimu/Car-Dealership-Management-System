@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{% import "bootstrap_wtf.html" as wtf %}
+<html>
+<body>
+{% block content %}
+<h4>Removecar</h4>
+{% if form %}
+    {{ wtf.quick_form(form) }}
+{% endif %}
+  {% endblock %}
+</body>
+</html>

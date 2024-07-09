@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<head>
+    <h4>Notifications</h4>
+    <style>
+        .notification {
+            background-color: lightblue;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+  {% if messages %}
+  {% for message in messages %}
+  <div class="notification">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+</body>
+</html>
+{%endblock%}
+
+

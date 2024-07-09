@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{%block content%}
+  <style>
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+     th,  td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+    }
+
+    tr:nth-child(even) {
+  background-color: #f2f2f2;
+    }
+
+    th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+    }
+
+   td {
+    text-align: right;
+    }
+
+    td:last-child {
+    text-align: right;
+    color: rgba(0, 0, 0, 0.973);
+    font-weight: bold;
+    padding-right: 15px;
+    }
+
+    tr:hover {
+    background-color: #ddd;
+    }
+    th, td {
+      border: 1px solid #1a1919;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #ddd;
+    }
+    h2 {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 50px;
+    }
+    p {
+      font-size: 1.2em;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h2>Analytics</h2>
+  <p>Total number of available cars: {{ available_cars_count }}</p>
+  <p>Total number of sold cars: {{ sold_cars_count }}</p>
+  <p>Total profits: {{ profits }}</p>
+  <p>Average profit: {{ avg_profit }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Car Make</th>
+        <th>Car Model</th>
+        <th>Available</th>
+        <th>Selling Price</th>
+        <th>Buying Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in available_cars %}
+      <tr>
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>Yes</td>
+        <td>{{ car.SP }}</td>
+        <td>{{ car.BP }}</td>
+      </tr>
+      {% endfor %}
+      {% for car in sold_cars %}
+      <tr>
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>No</td>
+        <td>{{ car.SP }}</td>
+        <td>{{ car.BP }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>
+{%endblock%}
